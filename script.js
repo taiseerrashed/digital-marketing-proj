@@ -1,5 +1,6 @@
 const menuBtn = document.getElementById("menu-btn");
 const mobileMenu = document.getElementById("mobile-menu");
+const mobileLinks = document.querySelectorAll("#mobile-menu a");
 const navbar = document.getElementById("navbar");
 const scrollBtn = document.getElementById("scrollBtn");
 
@@ -13,6 +14,13 @@ menuBtn.addEventListener("click", () => {
   }
 });
 
+mobileLinks.forEach((link) => {
+  link.addEventListener("click", () => {
+    mobileMenu.classList.remove("max-h-96");
+    mobileMenu.classList.add("max-h-0");
+  });
+});
+
 window.addEventListener("scroll", () => {
   if (window.scrollY > 50) {
     navbar.classList.add("shadow-xl");
@@ -24,7 +32,7 @@ window.addEventListener("scroll", () => {
 window.addEventListener("scroll", () => {
   if (window.scrollY > 300) {
     scrollBtn.classList.remove("opacity-0", "pointer-events-none");
-    scrollBtn.classList.add("opacity-100","scale-100");
+    scrollBtn.classList.add("opacity-100", "scale-100");
   } else {
     scrollBtn.classList.add("opacity-0", "pointer-events-none");
     scrollBtn.classList.remove("opacity-100", "scale-100");
